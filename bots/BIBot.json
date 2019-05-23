@@ -33,6 +33,10 @@
         {
             "intentVersion": "$LATEST", 
             "intentName": "Goodbye_Intent"
+        },
+            {
+            "intentVersion": "$LATEST",
+            "intentName": "Value_Intent"
         }
   ], 
   "locale": "en-US",
