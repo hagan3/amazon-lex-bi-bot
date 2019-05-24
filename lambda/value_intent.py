@@ -83,7 +83,7 @@ def count_intent_handler(intent_request, session_attributes):
     #
 
     query_string = COUNT_SELECT + COUNT_JOIN + "3210004304"
-
+    logger.debug('the query string is = ' + query_string)
     
     response = helpers.execute_athena_query(query_string)
 
