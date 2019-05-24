@@ -24,8 +24,8 @@ import bibot_userexits as userexits
 
 # SELECT statement for Count query
 COUNT_SELECT = "SELECT SUM(value) FROM contracttable"
-COUNT_JOIN = " WHERE contract_id = contract_id"
-COUNT_PHRASE = 'dollars'
+COUNT_JOIN = " WHERE contract_id = "
+COUNT_PHRASE = 'US dollars'
 
 logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
@@ -79,8 +79,7 @@ def count_intent_handler(intent_request, session_attributes):
     for dimension in bibot.DIMENSIONS:
         slot_key = bibot.DIMENSIONS.get(dimension).get('slot')
         if slot_values[slot_key] is not None:
-            value = userexits.pre_process_query_value(slot_key, slot_values[slot_key])
-            where_clause += COUNT_WHERE.format(bibot.DIMENSIONS.get(dimension).get('column'), value)
+            where_clause += bibot.DIMENSIONS.get(dimension).get('column')
     
     query_string = select_clause + where_clause
     

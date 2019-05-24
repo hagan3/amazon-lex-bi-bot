@@ -17,21 +17,20 @@
           "type": "CodeHook"
         },
         "sampleUtterances": [
-          "What is the value of {contract_id}",
-          "Does {contract_id} have a value",
-          "What is the total of {contract_id}",
-          "What is the value of {external_vendor_id} contracts"
+          "I'd like to look up a contract",
+          "I'd like to look up a contract value",
+          "What is the total of my contract"
         ],
     "slots": [
         {
-            "slotType": "AMAZON.Number",
+            "slotType": "AMAZON.NUMBER",
             "name": "contract_id",
             "slotConstraint": "Required",
             "valueElicitationPrompt": {
                 "maxAttempts": 2, 
                 "messages": [
                     {
-                        "content": "The ID of the contract",
+                        "content": "What is the ID of the contract?",
                         "contentType": "PlainText"
                     }
                 ]
@@ -41,7 +40,7 @@
             "description": "event_name"
         }, 
         {
-            "slotType": "AMAZON.Number",
+            "slotType": "AMAZON.NUMBER",
             "name": "external_vendor_id",
             "slotConstraint": "Optional",
             "valueElicitationPrompt": {
