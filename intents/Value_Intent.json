@@ -36,8 +36,7 @@
                     }
                 ]
             }, 
-            "priority": 1, 
-            "slotTypeVersion": "$LATEST", 
+            "priority": 1,
             "sampleUtterances": [], 
             "description": "event_name"
         }, 
@@ -55,7 +54,6 @@
                 ]
             },
             "priority": 2,
-            "slotTypeVersion": "$LATEST",
             "sampleUtterances": [],
             "description": "event_name"
         }
