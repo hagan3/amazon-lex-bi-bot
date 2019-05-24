@@ -1,0 +1,63 @@
+{
+	"name": "Value_Intent",
+        "description": "Find the value of a contract",
+        "conclusionStatement": {
+          "messages": [
+            {
+              "content": "via code hook",
+              "contentType": "PlainText"
+            }
+          ]
+        },
+        "fulfillmentActivity": {
+          "codeHook": {
+            "messageVersion": "1.0",
+            "uri": "{{lambda-arn}}"
+          },
+          "type": "CodeHook"
+        },
+        "sampleUtterances": [
+          "What is the value of {contract_id}",
+          "Does {contract_id} have a value",
+          "What is the total of {contract_id}",
+          "What is the value of {external_vendor_id} contracts"
+        ],
+    "slots": [
+        {
+            "slotType": "AMAZON.Number",
+            "name": "contract_id",
+            "slotConstraint": "Required",
+            "valueElicitationPrompt": {
+                "maxAttempts": 2, 
+                "messages": [
+                    {
+                        "content": "The ID of the contract",
+                        "contentType": "PlainText"
+                    }
+                ]
+            }, 
+            "priority": 1, 
+            "slotTypeVersion": "$LATEST", 
+            "sampleUtterances": [], 
+            "description": "event_name"
+        }, 
+        {
+            "slotType": "AMAZON.Number",
+            "name": "external_vendor_id",
+            "slotConstraint": "Optional",
+            "valueElicitationPrompt": {
+                "maxAttempts": 2,
+                "messages": [
+                    {
+                        "content": "The ID of the external vendor",
+                        "contentType": "PlainText"
+                    }
+                ]
+            },
+            "priority": 2,
+            "slotTypeVersion": "$LATEST",
+            "sampleUtterances": [],
+            "description": "event_name"
+        }
+    ]
+}
