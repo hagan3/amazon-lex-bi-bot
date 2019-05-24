@@ -1,6 +1,6 @@
 {
   "name": "BIBot",
-  "description": "BIBot - a SQL query bot for the TICKIT database",
+  "description": "BIBot - a SQL query bot for Arriba Data",
   "intents": [
         {
             "intentVersion": "$LATEST", 
@@ -33,6 +33,14 @@
         {
             "intentVersion": "$LATEST", 
             "intentName": "Goodbye_Intent"
+        },
+       {
+            "intentVersion": "$LATEST",
+            "intentName": "Supplier_Intent"
+        },
+       {
+            "intentVersion": "$LATEST",
+            "intentName": "Value_Intent"
         }
   ], 
   "locale": "en-US",
