@@ -25,7 +25,7 @@ import bibot_userexits as userexits
 # SELECT statement for Count query
 COUNT_SELECT = "SELECT supplier_name FROM contracttable"
 COUNT_JOIN = " WHERE contract_id = "
-COUNT_PHRASE = 'dollars'
+COUNT_PHRASE = ' '
 
 logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
@@ -56,32 +56,32 @@ def count_intent_handler(intent_request, session_attributes):
     session_attributes['finishedCount'] = '0'
     session_attributes['lastIntent'] = 'Count_Intent'
 
-    # Retrieve slot values from the current request
-    slot_values = session_attributes.get('slot_values')
+    # # Retrieve slot values from the current request
+    # slot_values = session_attributes.get('slot_values')
+    #
+    # try:
+    #     slot_values = helpers.get_slot_values(slot_values, intent_request)
+    # except bibot.SlotError as err:
+    #     return helpers.close(session_attributes, 'Fulfilled', {'contentType': 'PlainText','content': str(err)})
+    #
+    # logger.debug('<<BIBot>> "count_intent_handler(): slot_values: %s', slot_values)
+    #
+    # # Retrieve "remembered" slot values from session attributes
+    # slot_values = helpers.get_remembered_slot_values(slot_values, session_attributes)
+    # logger.debug('<<BIBot>> "count_intent_handler(): slot_values after get_remembered_slot_values: %s', slot_values)
 
-    try:
-        slot_values = helpers.get_slot_values(slot_values, intent_request)
-    except bibot.SlotError as err:
-        return helpers.close(session_attributes, 'Fulfilled', {'contentType': 'PlainText','content': str(err)})   
+    # # Remember updated slot values
+    # helpers.remember_slot_values(slot_values, session_attributes)
+    #
+    # # build and execute query
+    # select_clause = COUNT_SELECT
+    # where_clause = COUNT_JOIN
+    # for dimension in bibot.DIMENSIONS:
+    #     slot_key = bibot.DIMENSIONS.get(dimension).get('slot')
+    #     if slot_values[slot_key] is not None:
+    #         where_clause += bibot.DIMENSIONS.get(dimension).get('column')
     
-    logger.debug('<<BIBot>> "count_intent_handler(): slot_values: %s', slot_values)
-
-    # Retrieve "remembered" slot values from session attributes
-    slot_values = helpers.get_remembered_slot_values(slot_values, session_attributes)
-    logger.debug('<<BIBot>> "count_intent_handler(): slot_values after get_remembered_slot_values: %s', slot_values)
-
-    # Remember updated slot values
-    helpers.remember_slot_values(slot_values, session_attributes)
-    
-    # build and execute query
-    select_clause = COUNT_SELECT
-    where_clause = COUNT_JOIN
-    for dimension in bibot.DIMENSIONS:
-        slot_key = bibot.DIMENSIONS.get(dimension).get('slot')
-        if slot_values[slot_key] is not None:
-            where_clause += bibot.DIMENSIONS.get(dimension).get('column')
-    
-    query_string = select_clause + where_clause
+    query_string = COUNT_SELECT + COUNT_JOIN + "3210004304"
     
     response = helpers.execute_athena_query(query_string)
 
