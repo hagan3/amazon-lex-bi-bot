@@ -81,7 +81,7 @@ def count_intent_handler(intent_request, session_attributes):
     #     if slot_values[slot_key] is not None:
     #         where_clause += bibot.DIMENSIONS.get(dimension).get('column')
     
-    query_string = COUNT_SELECT + COUNT_JOIN + "3210004304"
+    query_string = "Select supplier_name from contracttable where contract_id = '3210004304'"
     logger.debug('the query string is = ' + query_string)
     response = helpers.execute_athena_query(query_string)
 
